@@ -100,3 +100,27 @@ class LogSesion(models.Model):
 
     def __str__(self):
         return f"LogSesion {self.id} - SesionFoto {self.sesion_foto.id}"
+    
+
+class SesionFoto(models.Model):
+    id_sesion = models.CharField(max_length=6, unique=True)
+    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    id_venta = models.ForeignKey(Venta, on_delete=models.CASCADE)
+    fecha_sesion = models.DateField()
+    fotografo = models.CharField(max_length=100)
+    estado = models.CharField(max_length=50, choices=[('Pendiente', 'Pendiente'), ('Completada', 'Completada')])
+
+    def __str__(self):
+        return f'{self.id_sesion} - {self.id_cliente} - {self.fecha_sesion}'
+
+
+class Pedido(models.Model):
+    id_pedido = models.CharField(max_length=6, unique=True)
+    id_venta = models.ForeignKey(Venta, on_delete=models.CASCADE)
+    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.IntegerField()
+    proveedor = models.CharField(max_length=100)
+    estado = models.CharField(max_length=50, choices=[('Pendiente', 'Pendiente'), ('Enviado', 'Enviado'), ('Recibido', 'Recibido')])
+
+    def __str__(self):
+        return f'{self.id_pedido} - {self.proveedor} - {self.estado}'
