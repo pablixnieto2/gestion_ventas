@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Productos en Venta</title>
+</head>
+<body>
+    <h1>Lista de Productos en Venta</h1>
+    <ul>
+        {% for producto in productos_venta %}
+            <li>{{ producto.nombre }} - {{ producto.categoria }} - {{ producto.stock }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

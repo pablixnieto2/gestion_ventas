@@ -1,10 +1,10 @@
 from django.db import models
 from simple_history.models import HistoricalRecords
 from clientes.models import Cliente
-from productos.models import Producto
+from productos.models import ProductoVenta, ProductoAlquiler
 
 class Venta(models.Model):
-    id_ventas = models.CharField(max_length=20, unique=True)
+    id_ventas = models.CharField(max_length=6, unique=True)
     created_by = models.EmailField()
     creation_date = models.DateTimeField(auto_now_add=True)
     change_timestamp = models.DateTimeField(auto_now=True)
@@ -13,7 +13,8 @@ class Venta(models.Model):
     estado_entrega = models.CharField(max_length=50, choices=[('Por Entregar o Enviar', 'Por Entregar o Enviar'), ('Entregado o Enviado', 'Entregado o Enviado'), ('Vestido Devuelto', 'Vestido Devuelto')])
     tipo = models.CharField(max_length=20, choices=[('Alquiler', 'Alquiler'), ('Venta', 'Venta')])
     id_clientes = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    id_productos = models.ManyToManyField(Producto)
+    productos_venta = models.ManyToManyField(ProductoVenta, blank=True)
+    productos_alquiler = models.ManyToManyField(ProductoAlquiler, blank=True)
     fecha_entrega = models.DateField()
     fecha_devolucion = models.DateField(null=True, blank=True)
     amount_deposito = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)

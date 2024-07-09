@@ -2,13 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Productos</title>
+    <title>Lista de Todos los Productos</title>
 </head>
 <body>
-    <h1>Lista de Productos</h1>
+    <h1>Lista de Todos los Productos</h1>
+    <h2>Productos en Venta</h2>
     <ul>
-        {% for producto in productos %}
-            <li>{{ producto.nombre }} - {{ producto.categoria }} - {{ producto.tienda }}</li>
+        {% for producto in productos_venta %}
+            <li>{{ producto.nombre }} - {{ producto.categoria }} - {{ producto.stock }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Productos en Alquiler</h2>
+    <ul>
+        {% for producto in productos_alquiler %}
+            <li>{{ producto.nombre }} - {{ producto.categoria }} - {{ producto.stock }}</li>
         {% endfor %}
     </ul>
 </body>

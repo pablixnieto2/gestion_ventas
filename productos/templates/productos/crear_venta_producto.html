@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Venta de Producto</title>
+</head>
+<body>
+    <h1>Crear Venta de Producto</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="id_ventas">ID Venta:</label>
+        <input type="text" id="id_ventas" name="id_ventas"><br>
+        <label for="created_by">Creado por:</label>
+        <input type="email" id="created_by" name="created_by"><br>
+        <label for="tienda">Tienda:</label>
+        <input type="text" id="tienda" name="tienda"><br>
+        <label for="id_clientes">ID Cliente:</label>
+        <input type="text" id="id_clientes" name="id_clientes"><br>
+        <label for="producto_id">ID Producto:</label>
+        <input type="text" id="producto_id" name="producto_id"><br>
+        <label for="fecha_entrega">Fecha de Entrega:</label>
+        <input type="date" id="fecha_entrega" name="fecha_entrega"><br>
+        <label for="total_a_pagar">Total a Pagar:</label>
+        <input type="text" id="total_a_pagar" name="total_a_pagar"><br>
+        <label for="total_pagado">Total Pagado:</label>
+        <input type="text" id="total_pagado" name="total_pagado"><br>
+        <label for="pendiente_de_pago">Pendiente de Pago:</label>
+        <input type="text" id="pendiente_de_pago" name="pendiente_de_pago"><br>
+        <label for="estado_pago">Estado del Pago:</label>
+        <input type="text" id="estado_pago" name="estado_pago"><br>
+        <label for="comentarios">Comentarios:</label>
+        <textarea id="comentarios" name="comentarios"></textarea><br>
+        <button type="submit">Crear Venta</button>
+    </form>
+</body>
+</html>
