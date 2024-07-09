@@ -29,10 +29,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap_datepicker_plus',
+    'simple_history',
     'core',   # Tu aplicación principal
     'rest_framework',  # Para APIs REST
     'django_filters',  # Para filtros en APIs
     'corsheaders',  # Para manejo de CORS
+    'ventas',  # Aplicación para ventas
+    'clientes',  # Aplicación para clientes
+    'productos',  # Aplicación para productos
+    'pagos',  # Aplicación para pagos
+    'sesiones_fotos',  # Aplicación para sesiones de fotos
+    'pedidos',  # Aplicación para pedidos
 ]
 
 STATIC_URL = '/static/'
@@ -52,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'gestion_ventas.urls'
