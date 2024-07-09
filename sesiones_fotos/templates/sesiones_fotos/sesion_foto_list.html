@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Sesiones de Fotos</title>
+</head>
+<body>
+    <h1>Lista de Sesiones de Fotos</h1>
+    <ul>
+        {% for sesion in sesiones_fotos %}
+            <li>ID Sesión: {{ sesion.id_sesion }} - Fotógrafo: {{ sesion.nombre_fotografo }} - Lugar: {{ sesion.lugar_sesion }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pagos</title>
+</head>
+<body>
+    <h1>Lista de Pagos</h1>
+    <ul>
+        {% for pago in pagos %}
+            <li>ID Pago: {{ pago.id_pago }} - Método: {{ pago.metodo_de_pago }} - Importe: {{ pago.importe }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

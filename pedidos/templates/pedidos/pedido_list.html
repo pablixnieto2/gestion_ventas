@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pedidos</title>
+</head>
+<body>
+    <h1>Lista de Pedidos</h1>
+    <ul>
+        {% for pedido in pedidos %}
+            <li>ID Pedido: {{ pedido.id_pedido }} - Proveedor: {{ pedido.proveedor }} - Estado: {{ pedido.estado }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
