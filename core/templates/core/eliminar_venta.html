@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Venta</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .btn-primary, .btn-secondary, .btn-success, .btn-warning, .btn-danger {
+            background-color: #FF69B4;
+            border-color: #FF69B4;
+        }
+        .btn-primary:hover, .btn-secondary:hover, .btn-success:hover, .btn-warning:hover, .btn-danger:hover {
+            background-color: #FF1493;
+            border-color: #FF1493;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Eliminar Venta</h1>
+        <div class="card">
+            <div class="card-header">
+                <h2>¿Estás seguro que deseas eliminar esta venta?</h2>
+            </div>
+            <div class="card-body">
+                <p><strong>ID Venta:</strong> {{ venta.id_venta }}</p>
+                <p><strong>Cliente:</strong> {{ venta.cliente.nombre }} {{ venta.cliente.apellido }}</p>
+                <p><strong>Fecha de Entrega:</strong> {{ venta.fecha_entrega }}</p>
+                <p><strong>Total a Pagar:</strong> {{ venta.total_pagar }}</p>
+                <p><strong>Total Pagado:</strong> {{ venta.total_pagado }}</p>
+                <p><strong>Pendiente de Pago:</strong> {{ venta.pendiente_pago }}</p>
+            </div>
+            <div class="card-footer">
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <a href="{% url 'venta-list' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Pago</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .btn-primary, .btn-secondary, .btn-success, .btn-warning, .btn-danger {
+            background-color: #FF69B4;
+            border-color: #FF69B4;
+        }
+        .btn-primary:hover, .btn-secondary:hover, .btn-success:hover, .btn-warning:hover, .btn-danger:hover {
+            background-color: #FF1493;
+            border-color: #FF1493;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Detalle del Pago</h1>
+        <div class="card">
+            <div class="card-header">
+                <h2>Pago {{ pago.id_pago }}</h2>
+            </div>
+            <div class="card-body">
+                <p><strong>ID Pago:</strong> {{ pago.id_pago }}</p>
+                <p><strong>Venta:</strong> {{ pago.venta.id_venta }}</p>
+                <p><strong>Fecha de Creación:</strong> {{ pago.creation_date }}</p>
+                <p><strong>Creado por:</strong> {{ pago.created_by }}</p>
+                <p><strong>Tienda:</strong> {{ pago.tienda }}</p>
+                <p><strong>Método de Pago:</strong> {{ pago.metodo_pago }}</p>
+                <p><strong>Importe:</strong> {{ pago.importe }}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'pago-update' pago.pk %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'pago-delete' pago.pk %}" class="btn btn-danger">Eliminar</a>
+                <a href="{% url 'pago-list' %}" class="btn btn-secondary">Volver a la Lista</a>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
