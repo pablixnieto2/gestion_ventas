@@ -49,6 +49,7 @@
             <div class="card-body">
                 <form method="post">
                     {% csrf_token %}
+                    {{ form.media }}
                     {{ form.as_p }}
                     <h4>Productos</h4>
                     {{ formset.management_form }}

@@ -45,6 +45,7 @@
             <div class="card-body">
                 <form method="post">
                     {% csrf_token %}
+                    {{ form.media }}
                     {{ form.as_p }}
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
