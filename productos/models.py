@@ -23,13 +23,13 @@ class ProductoVenta(models.Model):
 
 class ProductoAlquiler(models.Model):
     id_producto = models.CharField(max_length=6, unique=True)
-    nombre = models.CharField(max_length=255)
-    categoria = models.CharField(max_length=50, choices=[('Vestido', 'Vestido'), ('Accesorios', 'Accesorios'), ('Complementos', 'Complementos'), ('Otros', 'Otros')])
-    color = models.CharField(max_length=50)
-    talla = models.CharField(max_length=50)
+    nombre = models.CharField(maxlength=255)
+    categoria = models.CharField(maxlength=50, choices=[('Vestido', 'Vestido'), ('Accesorios', 'Accesorios'), ('Complementos', 'Complementos'), ('Otros', 'Otros')])
+    color = models.CharField(maxlength=50)
+    talla = models.CharField(maxlength=50)
     precio_alquiler = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='productos/alquiler/', null=True, blank=True)
-    estado = models.CharField(max_length=50, choices=[('Activo', 'Activo'), ('Baja', 'Baja')])
+    estado = models.CharField(maxlength=50, choices=[('Activo', 'Activo'), ('Baja', 'Baja')])
     stock = models.IntegerField(default=0)
     history = HistoricalRecords()
 
