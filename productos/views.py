@@ -1,7 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.core.exceptions import ValidationError
-from .models import Venta
-from productos.models import ProductoVenta, ProductoAlquiler, ReservaAlquiler
+from .models import ProductoVenta, ProductoAlquiler
 
 def producto_venta_list(request):
     productos_venta = ProductoVenta.objects.all()
@@ -18,33 +16,3 @@ def producto_venta_detail(request, id):
 def producto_alquiler_detail(request, id):
     producto_alquiler = get_object_or_404(ProductoAlquiler, id=id)
     return render(request, 'productos/producto_alquiler_detail.html', {'producto_alquiler': producto_alquiler})
-
-def crear_venta_alquiler(request):
-    if request.method == 'POST':
-        producto_id = request.POST.get('producto_id')
-        producto = get_object_or_404(ProductoAlquiler, id=producto_id)
-
-        try:
-            producto.clean()
-            # Aquí va la lógica para crear la venta
-            venta = Venta.objects.create(
-                id_ventas=request.POST.get('id_ventas'),
-                created_by=request.POST.get('created_by'),
-                tienda=request.POST.get('tienda'),
-                tipo='Alquiler',
-                id_clientes=request.POST.get('id_clientes'),
-                fecha_entrega=request.POST.get('fecha_entrega'),
-                fecha_devolucion=request.POST.get('fecha_devolucion'),
-                total_a_pagar=request.POST.get('total_a_pagar'),
-                total_pagado=request.POST.get('total_pagado'),
-                pendiente_de_pago=request.POST.get('pendiente_de_pago'),
-                estado_pago=request.POST.get('estado_pago'),
-                comentarios=request.POST.get('comentarios'),
-            )
-            venta.productos_alquiler.add(producto)
-            venta.save()
-            return render(request, 'ventas/venta_detail.html', {'venta': venta})
-        except ValidationError as e:
-            return render(request, 'error.html', {'error': e.message})
-
-    return render(request, 'ventas/crear_venta_alquiler.html')
