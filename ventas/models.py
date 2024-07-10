@@ -1,6 +1,6 @@
+# ventas/models.py
 from django.db import models
 from simple_history.models import HistoricalRecords
-from clientes.models import Cliente
 from productos.models import ProductoVenta, ProductoAlquiler
 
 class Venta(models.Model):
@@ -12,7 +12,7 @@ class Venta(models.Model):
     envio_entrega = models.BooleanField(default=False)
     estado_entrega = models.CharField(max_length=50, choices=[('Por Entregar o Enviar', 'Por Entregar o Enviar'), ('Entregado o Enviado', 'Entregado o Enviado'), ('Vestido Devuelto', 'Vestido Devuelto')])
     tipo = models.CharField(max_length=20, choices=[('Alquiler', 'Alquiler'), ('Venta', 'Venta')])
-    id_clientes = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    id_clientes = models.ForeignKey('clientes.Cliente', on_delete=models.CASCADE)
     productos_venta = models.ManyToManyField(ProductoVenta, blank=True)
     productos_alquiler = models.ManyToManyField(ProductoAlquiler, blank=True)
     fecha_entrega = models.DateField()
