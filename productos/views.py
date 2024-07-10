@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import ProductoVenta, ProductoAlquiler, ReservaAlquiler
 from ventas.models import Venta
+from .forms import ProductoVentaForm, ProductoAlquilerForm
 
 def producto_list(request):
     productos_venta = ProductoVenta.objects.all()
@@ -25,6 +26,26 @@ def producto_venta_detail(request, id):
 def producto_alquiler_detail(request, id):
     producto_alquiler = get_object_or_404(ProductoAlquiler, id=id)
     return render(request, 'productos/producto_alquiler_detail.html', {'producto_alquiler': producto_alquiler})
+
+def crear_producto_venta(request):
+    if request.method == 'POST':
+        form = ProductoVentaForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('producto_venta_list')
+    else:
+        form = ProductoVentaForm()
+    return render(request, 'productos/crear_producto_venta.html', {'form': form})
+
+def crear_producto_alquiler(request):
+    if request.method == 'POST':
+        form = ProductoAlquilerForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('producto_alquiler_list')
+    else:
+        form = ProductoAlquilerForm()
+    return render(request, 'productos/crear_producto_alquiler.html', {'form': form})
 
 def crear_venta_producto(request):
     if request.method == 'POST':
