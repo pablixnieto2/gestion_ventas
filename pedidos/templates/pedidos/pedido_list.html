@@ -8,8 +8,9 @@
     <h1>Lista de Pedidos</h1>
     <ul>
         {% for pedido in pedidos %}
-            <li>ID Pedido: {{ pedido.id_pedido }} - Proveedor: {{ pedido.proveedor }} - Estado: {{ pedido.estado }}</li>
+            <li><a href="{% url 'pedido_detail' pedido.id %}">Pedido {{ pedido.id_pedido }} - {{ pedido.proveedor }}</a></li>
         {% endfor %}
     </ul>
+    <a href="{% url 'crear_pedido' %}">Crear Pedido</a>
 </body>
 </html>

@@ -1,4 +1,3 @@
-# ventas/models.py
 from django.db import models
 from simple_history.models import HistoricalRecords
 from productos.models import ProductoVenta, ProductoAlquiler
@@ -44,3 +43,18 @@ class Venta(models.Model):
 
     def __str__(self):
         return f"Venta {self.id_ventas} - {self.tienda}"
+
+    @property
+    def estado_pago_display(self):
+        if self.pendiente_de_pago == 0:
+            return "Pagado"
+        elif self.pendiente_de_pago > 0:
+            return "Pendiente"
+        else:
+            return "Exceso de Pago"
+
+    @property
+    def total_pagado_con_descuento(self):
+        if self.descuento:
+            return self.total_pagado - self.descuento
+        return self.total_pagado

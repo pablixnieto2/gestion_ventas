@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import SesionFoto
+from .models import SesionFotos
 
-admin.site.register(SesionFoto)
+admin.site.register(SesionFotos)

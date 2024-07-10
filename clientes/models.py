@@ -33,3 +33,15 @@ class Cliente(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellido} - {self.telefono}"
+
+    @property
+    def label_cliente(self):
+        return f"{self.nombre} {self.apellido} - {self.telefono}"
+
+    @property
+    def whatsapp(self):
+        return f"http://wa.me/{self.telefono}"
+
+    @property
+    def duplicados(self):
+        return Cliente.objects.filter(telefono=self.telefono).exclude(id=self.id).exists()

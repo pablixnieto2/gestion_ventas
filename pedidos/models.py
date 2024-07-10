@@ -8,9 +8,24 @@ class Pedido(models.Model):
     proveedor = models.CharField(max_length=255)
     fecha_pedido = models.DateTimeField(auto_now_add=True)
     fecha_entrega = models.DateField()
-    estado = models.CharField(max_length=50, choices=[('Pendiente', 'Pendiente'), ('En Proceso', 'En Proceso'), ('Completado', 'Completado')])
+    estado = models.CharField(max_length=50, choices=[('Pendiente', 'Pendiente'), ('En Proceso', 'En Proceso'), ('Completado', 'Completado'), ('Cancelado', 'Cancelado')])
     comentarios = models.TextField(null=True, blank=True)
     history = HistoricalRecords()
 
     def __str__(self):
         return f"Pedido {self.id_pedido} - {self.proveedor}"
+
+    @property
+    def estado_display(self):
+        if self.estado == 'Pendiente':
+            return "Pendiente"
+        elif self.estado == 'En Proceso':
+            return "En Proceso"
+        elif self.estado == 'Completado':
+            return "Completado"
+        else:
+            return "Cancelado"
+
+    @property
+    def fecha_estimada_entrega(self):
+        return self.fecha_entrega

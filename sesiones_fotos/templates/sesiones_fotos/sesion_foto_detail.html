@@ -6,10 +6,13 @@
 </head>
 <body>
     <h1>Detalle de la Sesión de Fotos</h1>
-    <p>ID Sesión: {{ sesion_foto.id_sesion }}</p>
-    <p>Venta Asociada: {{ sesion_foto.id_ventas }}</p>
+    <p>ID de Sesión: {{ sesion_foto.id_sesion }}</p>
+    <p>Venta: {{ sesion_foto.id_ventas }}</p>
+    <p>Fecha de Sesión: {{ sesion_foto.fecha_sesion }}</p>
+    <p>Lugar de Sesión: {{ sesion_foto.lugar_sesion }}</p>
     <p>Fotógrafo: {{ sesion_foto.nombre_fotografo }}</p>
-    <p>Lugar: {{ sesion_foto.lugar_sesion }}</p>
     <p>Comentarios: {{ sesion_foto.comentarios }}</p>
+    <p>Fotos Entregadas: {{ sesion_foto.fotos_entregadas }}</p>
+    <a href="{% url 'sesion_foto_list' %}">Volver a la lista de sesiones de fotos</a>
 </body>
 </html>

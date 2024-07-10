@@ -21,6 +21,19 @@ class ProductoVenta(models.Model):
     def __str__(self):
         return f"{self.nombre} - {self.categoria}"
 
+    @property
+    def nombres(self):
+        return f"{self.categoria} {self.nombre} {self.color} {self.talla}"
+
+    @property
+    def reservados(self):
+        return ReservaAlquiler.objects.filter(producto=self).count()
+
+    @property
+    def disponibles(self):
+        return self.stock - self.reservados
+
+
 class ProductoAlquiler(models.Model):
     id_producto = models.CharField(max_length=6, unique=True)
     nombre = models.CharField(max_length=255)
@@ -41,6 +54,19 @@ class ProductoAlquiler(models.Model):
 
     def __str__(self):
         return f"{self.nombre} - {self.categoria}"
+
+    @property
+    def nombres(self):
+        return f"{self.categoria} {self.nombre} {self.color} {self.talla}"
+
+    @property
+    def reservados(self):
+        return ReservaAlquiler.objects.filter(producto=self).count()
+
+    @property
+    def disponibles(self):
+        return self.stock - self.reservados
+
 
 class ReservaAlquiler(models.Model):
     producto = models.ForeignKey(ProductoAlquiler, on_delete=models.CASCADE)

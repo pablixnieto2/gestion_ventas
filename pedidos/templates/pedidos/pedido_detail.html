@@ -6,12 +6,12 @@
 </head>
 <body>
     <h1>Detalle del Pedido</h1>
-    <p>ID Pedido: {{ pedido.id_pedido }}</p>
-    <p>Venta Asociada: {{ pedido.id_ventas }}</p>
+    <p>ID de Pedido: {{ pedido.id_pedido }}</p>
     <p>Proveedor: {{ pedido.proveedor }}</p>
     <p>Fecha de Pedido: {{ pedido.fecha_pedido }}</p>
     <p>Fecha de Entrega: {{ pedido.fecha_entrega }}</p>
     <p>Estado: {{ pedido.estado }}</p>
     <p>Comentarios: {{ pedido.comentarios }}</p>
+    <a href="{% url 'pedido_list' %}">Volver a la lista de pedidos</a>
 </body>
 </html>

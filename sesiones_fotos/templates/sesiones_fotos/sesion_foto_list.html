@@ -7,9 +7,10 @@
 <body>
     <h1>Lista de Sesiones de Fotos</h1>
     <ul>
-        {% for sesion in sesiones_fotos %}
-            <li>ID Sesión: {{ sesion.id_sesion }} - Fotógrafo: {{ sesion.nombre_fotografo }} - Lugar: {{ sesion.lugar_sesion }}</li>
+        {% for sesion_foto in sesiones_fotos %}
+            <li><a href="{% url 'sesion_foto_detail' sesion_foto.id %}">Sesión {{ sesion_foto.id_sesion }} - {{ sesion_foto.nombre_fotografo }}</a></li>
         {% endfor %}
     </ul>
+    <a href="{% url 'crear_sesion_foto' %}">Crear Sesión de Fotos</a>
 </body>
 </html>

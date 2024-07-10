@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+# pedidos/views.py
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Pedido
+from .forms import PedidoForm
 
 def pedido_list(request):
     pedidos = Pedido.objects.all()
@@ -11,6 +13,10 @@ def pedido_detail(request, id):
 
 def crear_pedido(request):
     if request.method == 'POST':
-        # Lógica para crear pedido
-        pass
-    return render(request, 'pedidos/crear_pedido.html')
+        form = PedidoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('pedido_list')
+    else:
+        form = PedidoForm()
+    return render(request, 'pedidos/crear_pedido.html', {'form': form})
