@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Detalle del Producto en Alquiler</title>
+    <title>Detalle del Producto para Alquiler</title>
 </head>
 <body>
-    <h1>Detalle del Producto en Alquiler</h1>
+    <h1>Detalle del Producto para Alquiler</h1>
     <p>Nombre: {{ producto_alquiler.nombre }}</p>
     <p>Categoría: {{ producto_alquiler.categoria }}</p>
     <p>Color: {{ producto_alquiler.color }}</p>
     <p>Talla: {{ producto_alquiler.talla }}</p>
     <p>Precio de Alquiler: {{ producto_alquiler.precio_alquiler }}</p>
+    <p>Estado: {{ producto_alquiler.estado }}</p>
     <p>Stock: {{ producto_alquiler.stock }}</p>
+    <a href="{% url 'producto_alquiler_list' %}">Volver a la lista de productos para alquiler</a>
+    <a href="{% url 'crear_cliente' %}">Crear Cliente</a>
 </body>
 </html>

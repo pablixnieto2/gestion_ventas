@@ -2,21 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Todos los Productos</title>
+    <title>Lista de Productos</title>
 </head>
 <body>
-    <h1>Lista de Todos los Productos</h1>
-    <h2>Productos en Venta</h2>
+    <h1>Lista de Productos</h1>
+    <h2>Productos para Venta</h2>
     <ul>
         {% for producto in productos_venta %}
-            <li>{{ producto.nombre }} - {{ producto.categoria }} - {{ producto.stock }}</li>
+            <li><a href="{% url 'producto_venta_detail' producto.id %}">{{ producto.nombre }} - {{ producto.categoria }}</a></li>
         {% endfor %}
     </ul>
-    <h2>Productos en Alquiler</h2>
+    <a href="{% url 'crear_producto_venta' %}">Crear Producto de Venta</a>
+    <h2>Productos para Alquiler</h2>
     <ul>
         {% for producto in productos_alquiler %}
-            <li>{{ producto.nombre }} - {{ producto.categoria }} - {{ producto.stock }}</li>
+            <li><a href="{% url 'producto_alquiler_detail' producto.id %}">{{ producto.nombre }} - {{ producto.categoria }}</a></li>
         {% endfor %}
     </ul>
+    <a href="{% url 'crear_producto_alquiler' %}">Crear Producto de Alquiler</a>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Productos</title>
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+    <h2>Productos para Venta</h2>
+    <ul>
+        {% for producto in productos_venta %}
+            <li><a href="{% url 'producto_venta_detail' producto.id %}">{{ producto.nombre }} - {{ producto.categoria }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'crear_producto_venta' %}">Crear Producto de Venta</a>
+    <h2>Productos para Alquiler</h2>
+    <ul>
+        {% for producto in productos_alquiler %}
+            <li><a href="{% url 'producto_alquiler_detail' producto.id %}">{{ producto.nombre }} - {{ producto.categoria }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'crear_producto_alquiler' %}">Crear Producto de Alquiler</a>
 </body>
 </html>

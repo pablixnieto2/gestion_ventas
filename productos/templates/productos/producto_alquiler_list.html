@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Productos en Alquiler</title>
+    <title>Lista de Productos para Alquiler</title>
 </head>
 <body>
-    <h1>Lista de Productos en Alquiler</h1>
+    <h1>Lista de Productos para Alquiler</h1>
     <ul>
         {% for producto in productos_alquiler %}
-            <li>{{ producto.nombre }} - {{ producto.categoria }} - {{ producto.stock }}</li>
+            <li><a href="{% url 'producto_alquiler_detail' producto.id %}">{{ producto.nombre }} - {{ producto.categoria }}</a></li>
         {% endfor %}
     </ul>
+    <a href="{% url 'producto_list' %}">Volver a la lista de todos los productos</a>
+    <a href="{% url 'crear_cliente' %}">Crear Cliente</a>
 </body>
 </html>

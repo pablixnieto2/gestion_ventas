@@ -8,10 +8,8 @@
     <h1>Detalle del Cliente</h1>
     <p>Nombre: {{ cliente.nombre }}</p>
     <p>Apellido: {{ cliente.apellido }}</p>
-    <p>Teléfono: {{ cliente.telefono }}</p>
     <p>Email: {{ cliente.email }}</p>
-    <p>Ubicación: {{ cliente.ubicacion }}</p>
-    <p>Estado: {{ cliente.estado }}</p>
-    <p>Comentarios: {{ cliente.comentarios }}</p>
+    <p>Teléfono: {{ cliente.telefono }}</p>
+    <a href="{% url 'cliente_list' %}">Volver a la lista</a>
 </body>
 </html>

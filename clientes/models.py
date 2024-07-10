@@ -5,7 +5,7 @@ class Cliente(models.Model):
     id_clientes = models.CharField(max_length=6, unique=True)
     created_by = models.EmailField()
     creation_date = models.DateTimeField(auto_now_add=True)
-    fecha_fiesta = models.DateField()
+    fecha_fiesta = models.DateField(null=True, blank=True)  # Permitir valores nulos
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
     prefijo = models.CharField(max_length=3)

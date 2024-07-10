@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Detalle del Producto en Venta</title>
+    <title>Detalle del Producto para Venta</title>
 </head>
 <body>
-    <h1>Detalle del Producto en Venta</h1>
+    <h1>Detalle del Producto para Venta</h1>
     <p>Nombre: {{ producto_venta.nombre }}</p>
     <p>Categoría: {{ producto_venta.categoria }}</p>
     <p>Color: {{ producto_venta.color }}</p>
     <p>Talla: {{ producto_venta.talla }}</p>
     <p>PVP: {{ producto_venta.pvp }}</p>
+    <p>Estado: {{ producto_venta.estado }}</p>
     <p>Stock: {{ producto_venta.stock }}</p>
+    <a href="{% url 'producto_venta_list' %}">Volver a la lista de productos para venta</a>
+    <a href="{% url 'crear_cliente' %}">Crear Cliente</a>
 </body>
 </html>
