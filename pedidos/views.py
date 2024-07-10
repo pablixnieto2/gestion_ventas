@@ -8,3 +8,9 @@ def pedido_list(request):
 def pedido_detail(request, id):
     pedido = get_object_or_404(Pedido, id=id)
     return render(request, 'pedidos/pedido_detail.html', {'pedido': pedido})
+
+def crear_pedido(request):
+    if request.method == 'POST':
+        # Lógica para crear pedido
+        pass
+    return render(request, 'pedidos/crear_pedido.html')
