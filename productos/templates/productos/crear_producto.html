@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Crear Cliente{% endblock %}
+{% block title %}Crear Producto{% endblock %}
 
 {% block extra_head %}
     {{ form.media }}
@@ -9,10 +9,10 @@
 {% block content %}
 <div class="card">
     <div class="card-header">
-        <h2 class="mb-0">Crear Cliente</h2>
+        <h2 class="mb-0">Crear Producto</h2>
     </div>
     <div class="card-body">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-primary">Guardar</button>
