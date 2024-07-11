@@ -1,8 +1,9 @@
 from django.db import models
 from simple_history.models import HistoricalRecords
+import uuid
 
 class Cliente(models.Model):
-    id_clientes = models.CharField(max_length=6, unique=True)
+    id_clientes = models.CharField(max_length=6, unique=True, default=uuid.uuid4().hex[:6].upper())
     created_by = models.EmailField()
     creation_date = models.DateTimeField(auto_now_add=True)
     fecha_fiesta = models.DateField(null=True, blank=True)  # Permitir valores nulos

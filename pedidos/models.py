@@ -1,9 +1,10 @@
 from django.db import models
 from simple_history.models import HistoricalRecords
 from ventas.models import Venta
+import uuid
 
 class Pedido(models.Model):
-    id_pedido = models.CharField(max_length=6, unique=True)
+    id_pedido = models.CharField(max_length=6, unique=True, default=uuid.uuid4().hex[:6].upper())
     id_ventas = models.ForeignKey(Venta, on_delete=models.CASCADE, related_name='pedidos')
     proveedor = models.CharField(max_length=255)
     fecha_pedido = models.DateTimeField(auto_now_add=True)

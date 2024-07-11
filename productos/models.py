@@ -1,9 +1,10 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from simple_history.models import HistoricalRecords
+import uuid
 
 class ProductoVenta(models.Model):
-    id_producto = models.CharField(max_length=6, unique=True)
+    id_producto = models.CharField(max_length=6, unique=True, default=uuid.uuid4().hex[:6].upper())
     nombre = models.CharField(max_length=255)
     categoria = models.CharField(max_length=50, choices=[('Vestido', 'Vestido'), ('Accesorios', 'Accesorios'), ('Complementos', 'Complementos'), ('Otros', 'Otros')])
     color = models.CharField(max_length=50)
@@ -35,7 +36,7 @@ class ProductoVenta(models.Model):
 
 
 class ProductoAlquiler(models.Model):
-    id_producto = models.CharField(max_length=6, unique=True)
+    id_producto = models.CharField(max_length=6, unique=True, default=uuid.uuid4().hex[:6].upper())
     nombre = models.CharField(max_length=255)
     categoria = models.CharField(max_length=50, choices=[('Vestido', 'Vestido'), ('Accesorios', 'Accesorios'), ('Complementos', 'Complementos'), ('Otros', 'Otros')])
     color = models.CharField(max_length=50)

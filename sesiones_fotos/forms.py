@@ -1,8 +1,8 @@
 # sesiones_fotos/forms.py
 from django import forms
-from .models import SesionFoto
+from .models import SesionFotos
 
 class SesionFotoForm(forms.ModelForm):
     class Meta:
-        model = SesionFoto
+        model = SesionFotos
         fields = '__all__'

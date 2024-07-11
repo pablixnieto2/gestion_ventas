@@ -1,9 +1,10 @@
 from django.db import models
 from simple_history.models import HistoricalRecords
 from ventas.models import Venta
+import uuid
 
 class SesionFotos(models.Model):
-    id_sesion = models.CharField(max_length=6, unique=True)
+    id_sesion = models.CharField(max_length=6, unique=True, default=uuid.uuid4().hex[:6].upper())
     venta = models.ForeignKey(Venta, on_delete=models.CASCADE, related_name='sesiones_fotos')
     fecha_sesion = models.DateField()
     hora_inicio = models.TimeField()
